@@ -1,0 +1,31 @@
+type Item {
+    id: ID!
+    title: String!
+    description: String
+    state: String
+    url: String!
+    price: Float
+    updatedTime: String!
+}
+
+type Session {
+    id: ID!
+    userId: String!
+    store: String!
+    query: String!
+    priceRange: [Float!]
+    lastSeenIds: [ID!]
+    createdAt: String!
+    updatedAt: String
+    items: [Item!]!
+}
+
+type Query {
+    sessions: [Session!]!
+    search(
+        query: String!
+        priceRange: [Float!]
+        categoryId: Int
+        store: String!
+    ): [Item!]!
+}
